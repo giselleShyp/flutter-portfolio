@@ -1,16 +1,29 @@
-# my_portfolio
+Flutter Portfolio Template
+A modern, dynamic digital resume built with Flutter and Clean Architecture. This project is fully data-driven via Firebase.
+✨ Features
+- AI-Optimized UI: Designed using Reforge AI for a sleek, professional developer look.
+- Dynamic Data: Fetches Profile, Experience, and Volunteering sections from Firestore.
+- Service-Oriented: Integrated URL handling for LinkedIn, GitHub, and Email.
 
-A new Flutter project.
+🛠 Tech Stack
+- Framework: Flutter
+- State Management: Riverpod (with Code Generation)
+- Backend: Firebase Firestore
+- Design: Reforge AI
+- Navigation: AutoRoute
+- Formatting: Intl Package
 
-## Getting Started
+## 🏗 Project Structure
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```text
+lib/
+├── core/               # Shared logic, theme, and global providers
+│   ├── layouts/        # Main app wrappers (MainLayout)
+│   ├── providers/      # Global Riverpod providers
+│   ├── services/       # Core services (Firebase, URL Launcher)
+│   └── widgets/        # Reusable UI components (AppText, BaseCard)
+└── features/           # Feature-first modules
+    └── [feature_name]/ # e.g., experience, home, projects
+        ├── data/       # Models and Remote Datasources
+        ├── domain/     # Entities and Business Logic
+        └── presentation/ # UI Screens and Controllers (Riverpod)
