@@ -1,11 +1,12 @@
-\`\`\`Flutter Portfolio Template
-A modern, dynamic digital resume built with Flutter and Clean Architecture. This project is fully data-driven via Firebase.
-\`\`\`
+# Flutter Portfolio Template
+A modern, dynamic digital resume built with **Flutter** and **Clean Architecture**. This project is fully data-driven via **Firebase**.
 
-✨ Features
-- AI-Optimized UI: Designed using Reforge AI for a sleek, professional developer look.
-- Dynamic Data: Fetches Profile, Experience, and Volunteering sections from Firestore.
-- Service-Oriented: Integrated URL handling for LinkedIn, GitHub, and Email.
+---
+
+### ✨ Features
+* **AI-Optimized UI:** Designed using **Reforge AI** for a sleek, professional developer look.
+* **Dynamic Data:** Fetches Profile, Experience, and Volunteering sections from Firestore.
+* **Service-Oriented:** Integrated URL handling for LinkedIn, GitHub, and Email.
 
 🛠 Tech Stack
 - Framework: Flutter
