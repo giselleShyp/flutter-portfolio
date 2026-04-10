@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_portfolio/core/constants/gaps.dart';
 import 'package:my_portfolio/core/layouts/main_layout.dart';
@@ -63,12 +64,25 @@ Widget _buildSectionHeader(String title) {
 
 Widget _buildExperiencesList(List<ExperienceEntity> experiencesList) {
   return Column(
-    children: experiencesList.map((experience) {
+    children: experiencesList.asMap().entries.map((entry) {
+      final index = entry.key;
+      final experience = entry.value;
+
       return SelectableExperienceItem(
         experienceEntity: experience,
         isFirst: experience == experiencesList.first,
         isLast: experience == experiencesList.last,
-      ); // or your custom widget
+      )
+          .animate()
+          .fadeIn(
+            duration: 600.ms,
+            delay: ((index * 150)).ms,
+          )
+          .slideY(
+            begin: 0.1,
+            end: 0,
+            curve: Curves.easeOutCubic,
+          ); // or your custom widget
     }).toList(),
   );
 }

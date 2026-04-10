@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_portfolio/core/constants/gaps.dart';
 import 'package:my_portfolio/core/layouts/main_layout.dart';
@@ -46,7 +47,7 @@ Widget _buildBody(ProfileEntity profile, WidgetRef ref) {
         phoneNumber: profile.phone,
         location: profile.location,
         email: profile.email,
-      ),
+      ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.2, end: 0),
       Gaps.h24,
       SocialActionButtons(
         onLinkedInPressed: () {
@@ -62,7 +63,12 @@ Widget _buildBody(ProfileEntity profile, WidgetRef ref) {
           // For emails, you can use the 'mailto' scheme
           urlService.openUrl('mailto:${profile.email}');
         },
-      ),
+      )
+          .animate()
+          .fadeIn(delay: 200.ms, duration: 600.ms)
+          .slideY(begin: 0.3, end: 0)
+          .animate(onPlay: (controller) => controller.repeat(reverse: true))
+          .shimmer(delay: 2.seconds, duration: 1500.ms, color: Colors.white24),
       Gaps.h24,
       ProfileSummaryCard(
         about: profile.about,
@@ -70,6 +76,9 @@ Widget _buildBody(ProfileEntity profile, WidgetRef ref) {
         certifications: profile.certifications,
         languages: profile.languages,
       )
+          .animate()
+          .fadeIn(delay: 400.ms, duration: 600.ms)
+          .slideY(begin: 0.1, end: 0),
     ],
   );
 }

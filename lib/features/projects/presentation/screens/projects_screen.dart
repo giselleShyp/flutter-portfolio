@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_portfolio/core/constants/app_sizes.dart';
 import 'package:my_portfolio/core/layouts/main_layout.dart';
@@ -40,44 +41,27 @@ class ProjectsScreen extends ConsumerWidget {
 Widget _buildProjectsList(List<ProjectEntity> projectsList) {
   return Column(
     spacing: AppSize.s16.value,
-    children: projectsList.map((project) {
+    children: projectsList.asMap().entries.map((entry) {
+      final index = entry.key;
+      final project = entry.value;
+
       return ProjectCard(
         title: project.title,
         description: project.description,
         technologies: project.technologies,
         projectType: project.type,
         githubUrl: project.githubUrl,
-      ); // or your custom widget
+      )
+          .animate()
+          .fadeIn(
+            duration: 500.ms,
+            delay: (index * 200).ms, // Staggered entrance
+          )
+          .slideX(
+            begin: 0.2,
+            end: 0,
+            curve: Curves.easeOutCubic,
+          ); // or your custom widget
     }).toList(),
   );
 }
-
-      // ProjectCard(
-      //     project: ProjectEntity(
-      //       title: "Sawa Health",
-      //       description:
-      //           "Cross-platform shipping and logistics mobile application",
-      //       technologies: ["Flutter", "Dart"],
-      //       companyName: "Shyp studio",
-      //       type: ProjectType.private,
-      //     ),
-      //   ),
-      //   Gaps.h12,
-      //   ProjectCard(
-      //     project: ProjectEntity(
-      //       title: "Resto chine",
-      //       description: "description",
-      //       technologies: ["flutter", "dart", "Git"],
-      //       type: ProjectType.public,
-      //       githubUrl: "dmnsbfd",
-      //     ),
-      //   ),
-      //   Gaps.h12,
-      //   ProjectCard(
-      //     project: ProjectEntity(
-      //       title: "title",
-      //       description: "description",
-      //       technologies: ["technologies"],
-      //       type: ProjectType.work,
-      //     ),
-      //   ),
