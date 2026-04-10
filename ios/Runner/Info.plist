@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+  	<string>https</string>
+  	<string>mailto</string>
+  	<string>tel</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>My Portfolio</string>
 	<key>CFBundleExecutable</key>
