@@ -33,7 +33,7 @@ class _BasePageState extends State<BasePage> {
           ExperienceRoute(),
           ProjectsRoute(),
         ],
-        duration: const Duration(microseconds: 0),
+        duration: Duration.zero,
         builder: (context, child) {
           final tabsRouter = context.tabsRouter;
 

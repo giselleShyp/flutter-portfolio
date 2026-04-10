@@ -3,6 +3,7 @@ import 'package:my_portfolio/core/constants/app_sizes.dart';
 import 'package:my_portfolio/core/constants/gaps.dart';
 import 'package:my_portfolio/core/widgets/buttons/theme_switcher_button.dart';
 import 'package:my_portfolio/core/widgets/text/app_text.dart';
+import 'package:flutter/services.dart';
 
 class MainLayout extends StatelessWidget {
   const MainLayout({
@@ -16,7 +17,17 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor:
+            Colors.transparent, // Makes status bar blend with AppBar
+        statusBarIconBrightness:
+            isDark ? Brightness.light : Brightness.dark, // Android
+        statusBarBrightness: isDark ? Brightness.dark : Brightness.light, // iOS
+      ),
       child: Scaffold(
         appBar: AppBar(
           shape: Border(
